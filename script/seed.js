@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Item} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -14,6 +14,10 @@ async function seed() {
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
+
+  const items = await Promise.all([
+    Item.create({item_id: '12334', access_token: 'a1b2c3d4'})
+  ])
 }
 
 // We've separated the `seed` function from the `runSeed` function.
