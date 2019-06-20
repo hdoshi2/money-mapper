@@ -30,6 +30,15 @@ router.post('/get_access_token', function(request, response, next) {
   })
 })
 
-////TESTING
-
-///MADE THIS CHANGE
+router.get('/auth', function(request, response, next) {
+  client.getAuth(ACCESS_TOKEN, function(error, authResponse) {
+    if (error != null) {
+      prettyPrintResponse(error)
+      return response.json({
+        error: error
+      })
+    }
+    prettyPrintResponse(authResponse)
+    response.json({error: null, auth: authResponse})
+  })
+})

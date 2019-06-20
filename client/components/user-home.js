@@ -26,7 +26,9 @@ const handler = window.Plaid.create({
     // Optional, called when Link loads
   },
   onSuccess: function(public_token, metadata) {
-    console.log(public_token)
+    console.log('public_token', public_token)
+    console.log('metadata', metadata)
+
     axios.post('/api/link/get_access_token', {
       public_token: public_token
     })
