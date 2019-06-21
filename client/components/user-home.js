@@ -57,16 +57,47 @@ const handler = window.Plaid.create({
 })
 
 export const UserHome = props => {
+  console.log('props', props)
   const {email} = props
+  const {transactions} = props
 
   return (
     <div>
       <h3>Welcome, {email}</h3>
-      <button id="link-button" type="button" onClick={() => handler.open()}>
+      <button
+        id="link-button"
+        type="button"
+        className="btn btn-primary"
+        onClick={() => handler.open()}
+      >
         Link Account
       </button>
       <div>
         <div>Account Info:</div>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Type</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Category</th>
+              <th scope="col">Sub-Category</th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map(item => {
+              return (
+                <tr key={item.id}>
+                  <th scope="row">{item.date}</th>
+                  <td>{item.name}</td>
+                  <td>{item.amount}</td>
+                  <td>{item.category1}</td>
+                  <td>{item.category2}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   )
@@ -76,8 +107,10 @@ export const UserHome = props => {
  * CONTAINER
  */
 const mapState = state => {
+  console.log('state', state)
   return {
-    email: state.user.email
+    email: state.user.email,
+    transactions: state.transaction
   }
 }
 
