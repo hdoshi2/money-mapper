@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {getExpenseByCategory} from './utility'
+import ReactSvgPieChart from 'react-svg-piechart'
 
 /**
  * COMPONENT
@@ -64,6 +65,27 @@ export const UserHome = props => {
 
   const accountSummary = getExpenseByCategory(transactions)
   console.log('test', accountSummary)
+  console.log('test2', accountSummary['Food and Drink'])
+
+  const data = [
+    {
+      title: 'Food',
+      value: Number(accountSummary['Food and Drink']),
+      color: '#22594e'
+    },
+    {
+      title: 'Payment',
+      value: Number(accountSummary.Payment),
+      color: '#2f7d6d'
+    },
+    {
+      title: 'Recreation',
+      value: Number(accountSummary.Recreation),
+      color: '#3da18d'
+    },
+    {title: 'Shops', value: Number(accountSummary.Shops), color: '#69c2b0'},
+    {title: 'Travel', value: Number(accountSummary.Travel), color: '#a1d9ce'}
+  ]
 
   return (
     <div>
@@ -78,6 +100,22 @@ export const UserHome = props => {
       </button>
       <div>
         <div>Account Info:</div>
+        <ReactSvgPieChart
+          data={data}
+          // If you need expand on hover (or touch) effect
+          expandOnHover
+          // If you need custom behavior when sector is hovered (or touched)
+          expandSize={20}
+          strokeWidth={0}
+          viewBoxSize={50}
+          onSectorHover={(d, i, e) => {
+            if (d) {
+              console.log('Mouse enter - Index:', i, 'Data:', d, 'Event:', e)
+            } else {
+              console.log('Mouse leave - Index:', i, 'Event:', e)
+            }
+          }}
+        />
         <table className="table table-striped">
           <thead>
             <tr>
