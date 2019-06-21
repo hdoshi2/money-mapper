@@ -30,7 +30,7 @@ const handler = window.Plaid.create({
     console.log('metadata', metadata)
 
     axios.post('/api/link/get_access_token', {
-      public_token: public_token
+      public_token
     })
   },
   onExit: function(err, metadata) {
@@ -65,6 +65,9 @@ export const UserHome = props => {
       <button id="link-button" type="button" onClick={() => handler.open()}>
         Link Account
       </button>
+      <div>
+        <div>Account Info:</div>
+      </div>
     </div>
   )
 }

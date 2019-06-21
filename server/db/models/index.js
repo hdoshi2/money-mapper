@@ -1,5 +1,6 @@
 const User = require('./user')
 const Item = require('./item')
+const Transaction = require('./transaction')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -18,7 +19,11 @@ const Item = require('./item')
 Item.belongsTo(User)
 User.hasMany(Item)
 
+Transaction.belongsTo(User)
+User.hasMany(Item)
+
 module.exports = {
   User,
-  Item
+  Item,
+  Transaction
 }
