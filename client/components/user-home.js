@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import {getExpenseByCategory} from './utility'
 
 /**
  * COMPONENT
@@ -61,46 +62,9 @@ export const UserHome = props => {
   const {email} = props
   const {transactions} = props
 
-  const expenseTotal = transactions => {
-    let sumShops = 0
-    let sumPayment = 0
-    let sumFood = 0
-    let sumRecreation = 0
-    let sumTransfer = 0
-    let sumTravel = 0
+  const accountSummary = getExpenseByCategory(transactions)
+  console.log('test', accountSummary)
 
-    transactions.map(elem => {
-      if (elem.category1 === 'Shops') {
-        sumShops += Number(elem.amount)
-      }
-      if (elem.category1 === 'Payment') {
-        sumPayment += Number(elem.amount)
-      }
-      if (elem.category1 === 'Recreation') {
-        sumRecreation += Number(elem.amount)
-      }
-      if (elem.category1 === 'Transfer') {
-        sumTransfer += Number(elem.amount)
-      }
-      if (elem.category1 === 'Food and Drink') {
-        sumFood += Number(elem.amount)
-      }
-      if (elem.category1 === 'Travel') {
-        sumFood += Number(elem.amount)
-      }
-    })
-
-    const {totals} = props
-
-    return {
-      Shops: sumShops.toFixed(2),
-      Payment: sumPayment.toFixed(2),
-      Recreation: sumRecreation.toFixed(2),
-      Transfer: sumTransfer.toFixed(2),
-      'Food and Drink': sumFood.toFixed(2),
-      Travel: sumTravel.toFixed(2)
-    }
-  }
   return (
     <div>
       <h3>Welcome, {email}</h3>
