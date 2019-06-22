@@ -26,7 +26,7 @@ export const UserHome = props => {
         <h5 className="d-flex justify-content-center">Spending By Category</h5>
         <LegendDonut data={data} />
         <hr />
-        <div className="card-columns">
+        <div className="columnCard">
           {accounts.map(item => {
             return (
               <div

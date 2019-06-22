@@ -80,20 +80,15 @@ async function seed() {
     password: '1234'
   })
 
-  const users = await Promise.all([
-    User.create({email: 'hari@email.com', password: '1234'}),
-    User.create({email: 'guest@email.com', password: '1234'})
-  ])
-
   /*-------------------- ITEMS ----------------------*/
   const hariItem = await Item.create({
-    bank: 'chase',
-    accessToken: 'access-sandbox-123',
+    item_id: '456',
+    access_token: 'access-sandbox-123',
     userId: hari.id
   })
   const guestItem = await Item.create({
-    bank: 'bank of america',
-    accessToken: 'access-sandbox-456',
+    item_id: '123',
+    access_token: 'access-sandbox-456',
     userId: guest.id
   })
 
@@ -116,25 +111,26 @@ async function seed() {
     accountId: 'hariChaseSaving',
     balanceCurrent: 10000,
     balanceAvailable: 10000,
-    name: 'Chase Saving'
+    name: 'Chase Saving',
+    userId: hari.id
   })
 
   const guestChecking = await Account.create({
-    accountId: 'sheriChaseChecking',
+    accountId: 'guestChaseChecking',
     balanceCurrent: 4000,
     balanceAvailable: 4000,
     name: 'Bank of America Checking',
     userId: guest.id
   })
   const guestCredit = await Account.create({
-    accountId: 'sheriChaseCredit',
+    accountId: 'guestChaseCredit',
     balanceCurrent: 3000,
     balanceAvailable: 3000,
     name: 'Bank of America Credit Card',
     userId: guest.id
   })
   const guestSaving = await Account.create({
-    accountId: 'sheriChaseSaving',
+    accountId: 'guestChaseSaving',
     balanceCurrent: 12000,
     balanceAvailable: 12000,
     name: 'Bank of America Saving',
@@ -149,7 +145,7 @@ async function seed() {
         name: 'Google Payroll',
         amount: -2200,
         date: day,
-        accountId: guestChecking.account_id,
+        account_id: guestChecking.accountId,
         category1: 'Transfer',
         category2: 'Payroll',
         userId: guest.id
@@ -160,7 +156,7 @@ async function seed() {
         name: 'Google Payroll',
         amount: -500,
         date: day,
-        accountId: guestSaving.accountId,
+        account_id: guestSaving.accountId,
         category1: 'Transfer',
         category2: 'Payroll',
         userId: guest.id
@@ -171,7 +167,7 @@ async function seed() {
         name: 'Credit Card Payment',
         amount: 200,
         date: day,
-        accountId: guestChecking.accountId,
+        account_id: guestChecking.accountId,
         category1: 'Payment',
         category2: 'Credit Card',
         userId: guest.id
@@ -182,7 +178,7 @@ async function seed() {
         name: 'Rent',
         amount: 1500,
         date: day,
-        accountId: guestChecking.accountId,
+        account_id: guestChecking.accountId,
         category1: 'Payment',
         category2: 'Rent',
         userId: guest.id
@@ -193,7 +189,7 @@ async function seed() {
         name: 'ConEd',
         amount: 50,
         date: day,
-        accountId: guestChecking.accountId,
+        account_id: guestChecking.accountId,
         category1: 'Payment',
         category2: 'Electric Bill',
         userId: guest.id
@@ -205,7 +201,7 @@ async function seed() {
         name,
         amount: randomAmountSmall(),
         date: day,
-        accountId: guestCredit.accountId,
+        account_id: guestCredit.accountId,
         category1: 'Food and Drink',
         category2: 'Coffee Shop',
         userId: guest.id,
@@ -219,7 +215,7 @@ async function seed() {
         name,
         amount: randomAmountSmall(),
         date: day,
-        accountId: guestCredit.accountId,
+        account_id: guestCredit.accountId,
         category1: 'Food and Drink',
         category2: 'Restaurants',
         userId: guest.id,
@@ -233,7 +229,7 @@ async function seed() {
         name,
         amount: randomAmount(),
         date: day,
-        accountId: guestCredit.accountId,
+        account_id: guestCredit.accountId,
         category1: 'Shops',
         category2: 'Supermarkets and Groceries',
         userId: guest.id,
@@ -247,7 +243,7 @@ async function seed() {
         name,
         amount: randomBigAmount(),
         date: day,
-        accountId: guestCredit.accountId,
+        account_id: guestCredit.accountId,
         category1: 'Shops',
         category2: 'Clothing',
         userId: guest.id,
@@ -259,7 +255,7 @@ async function seed() {
       name: 'United Airlines',
       amount: 350,
       date: '2018-06-19',
-      accountId: guestCredit.accountId,
+      account_id: guestCredit.accountId,
       category1: 'Travel',
       category2: 'Airlines and Aviation Services',
       userId: guest.id
@@ -269,7 +265,7 @@ async function seed() {
         name: 'Netflix',
         amount: 12,
         date: day,
-        accountId: guestCredit.accountId,
+        account_id: guestCredit.accountId,
         category1: 'Service',
         category2: 'Entertainment',
         userId: guest.id
@@ -281,7 +277,7 @@ async function seed() {
         name: 'Facebook Payroll',
         amount: -2200,
         date: day,
-        accountId: hariChecking.accountId,
+        account_id: hariChecking.accountId,
         category1: 'Transfer',
         category2: 'Payroll',
         userId: hari.id
@@ -292,7 +288,7 @@ async function seed() {
         name: 'FacebookPayroll',
         amount: -500,
         date: day,
-        accountId: hariSaving.accountId,
+        account_id: hariSaving.accountId,
         category1: 'Transfer',
         category2: 'Payroll',
         userId: hari.id
@@ -303,7 +299,7 @@ async function seed() {
         name: 'Credit Card Payment',
         amount: 200,
         date: day,
-        accountId: hariChecking.accountId,
+        account_id: hariChecking.accountId,
         category1: 'Payment',
         category2: 'Credit Card',
         userId: hari.id
@@ -314,7 +310,7 @@ async function seed() {
         name: 'Rent',
         amount: 1500,
         date: day,
-        accountId: hariChecking.accountId,
+        account_id: hariChecking.accountId,
         category1: 'Payment',
         category2: 'Rent',
         userId: hari.id
@@ -325,7 +321,7 @@ async function seed() {
         name: 'ConEd',
         amount: 50,
         date: day,
-        accountId: hariChecking.accountId,
+        account_id: hariChecking.accountId,
         category1: 'Payment',
         category2: 'Electric Bill',
         userId: hari.id
@@ -337,7 +333,7 @@ async function seed() {
         name,
         amount: randomAmountSmall(),
         date: day,
-        accountId: hariCredit.accountId,
+        account_id: hariCredit.accountId,
         category1: 'Food and Drink',
         category2: 'Coffee Shop',
         userId: hari.id,
@@ -351,7 +347,7 @@ async function seed() {
         name,
         amount: randomAmountSmall(),
         date: day,
-        accountId: hariCredit.accountId,
+        account_id: hariCredit.accountId,
         category1: 'Food and Drink',
         category2: 'Restaurants',
         userId: hari.id,
@@ -365,7 +361,7 @@ async function seed() {
         name,
         amount: randomAmount(),
         date: day,
-        accountId: hariCredit.accountId,
+        account_id: hariCredit.accountId,
         category1: 'Shops',
         category2: 'Supermarkets and Groceries',
         userId: hari.id,
@@ -379,7 +375,7 @@ async function seed() {
         name,
         amount: randomBigAmount(),
         date: day,
-        accountId: hariCredit.accountId,
+        account_id: hariCredit.accountId,
         category1: 'Shops',
         category2: 'Clothing',
         userId: hari.id,
@@ -391,7 +387,7 @@ async function seed() {
       name: 'United Airlines',
       amount: 350,
       date: '2018-06-19',
-      accountId: hariCredit.accountId,
+      account_id: hariCredit.accountId,
       category1: 'Travel',
       category2: 'Airlines and Aviation Services',
       userId: hari.id
@@ -401,7 +397,7 @@ async function seed() {
         name: 'Netflix',
         amount: 12,
         date: day,
-        accountId: hariCredit.accountId,
+        account_id: hariCredit.accountId,
         category1: 'Service',
         category2: 'Entertainment',
         userId: hari.id
