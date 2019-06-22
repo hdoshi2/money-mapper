@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Item, Transaction} = require('../db/models')
+const {Item, Transaction, Account} = require('../db/models')
 var plaid = require('plaid')
 
 module.exports = router
@@ -58,11 +58,12 @@ router.post('/get_access_token', function(request, response, next) {
             return request.json(error)
           }
           const transcations = result.transactions
+          const account = result.accounts
+          console.log('account', account)
 
-          const addToItems = transcations.map(async transaction => {
-            console.log('address', transaction && transaction.location)
-
+          const addToTransaction = transcations.map(async transaction => {
             await Transaction.create({
+              userId: request.user.id,
               account_id: transaction.account_id,
               name: transaction.name,
               amount: transaction.amount.toFixed(2),
@@ -76,6 +77,19 @@ router.post('/get_access_token', function(request, response, next) {
               country: transaction.location.country,
               lat: transaction.location.lat,
               lon: transaction.location.long
+            })
+          })
+          const addToAccount = account.map(async acc => {
+            await Account.create({
+              userId: request.user.id,
+              accountId: acc.account_id,
+              name: acc.name,
+              officialName: acc.official_name,
+              subtype: acc.subtype,
+              type: acc.type,
+              balanceAvailable: acc.balances.available,
+              balanceCurrent: acc.balances.current,
+              balanceLimit: acc.balances.limit
             })
           })
         }
