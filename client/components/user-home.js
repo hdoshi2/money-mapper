@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import axios from 'axios'
-import {getExpenseByCategory} from './utility'
-import ReactSvgPieChart from 'react-svg-piechart'
+import {getDataByCategory} from './utility'
+import LegendDonut from './LegendDonut'
 
 /**
  * COMPONENT
@@ -43,49 +43,14 @@ const handler = window.Plaid.create({
     // metadata contains information about the institution
     // that the user selected and the most recent API request IDs.
     // Storing this information can be helpful for support.
-  },
-  onEvent: function(eventName, metadata) {
-    // Optionally capture Link flow events, streamed through
-    // this callback as your users connect an Item to Plaid.
-    // For example:
-    // eventName = "TRANSITION_VIEW"
-    // metadata  = {
-    //   link_session_id: "123-abc",
-    //   mfa_type:        "questions",
-    //   timestamp:       "2017-09-14T14:42:19.350Z",
-    //   view_name:       "MFA",
-    // }
   }
 })
 
 export const UserHome = props => {
-  console.log('props', props)
   const {email} = props
   const {transactions} = props
 
-  const accountSummary = getExpenseByCategory(transactions)
-  console.log('test', accountSummary)
-  console.log('test2', accountSummary['Food and Drink'])
-
-  const data = [
-    {
-      title: 'Food',
-      value: Number(accountSummary['Food and Drink']),
-      color: '#22594e'
-    },
-    {
-      title: 'Payment',
-      value: Number(accountSummary.Payment),
-      color: '#2f7d6d'
-    },
-    {
-      title: 'Recreation',
-      value: Number(accountSummary.Recreation),
-      color: '#3da18d'
-    },
-    {title: 'Shops', value: Number(accountSummary.Shops), color: '#69c2b0'},
-    {title: 'Travel', value: Number(accountSummary.Travel), color: '#a1d9ce'}
-  ]
+  const donutData = getDataByCategory(transactions)
 
   return (
     <div>
@@ -99,23 +64,8 @@ export const UserHome = props => {
         Link Account
       </button>
       <div>
-        <div>Account Info:</div>
-        <ReactSvgPieChart
-          data={data}
-          // If you need expand on hover (or touch) effect
-          expandOnHover
-          // If you need custom behavior when sector is hovered (or touched)
-          expandSize={20}
-          strokeWidth={0}
-          viewBoxSize={50}
-          onSectorHover={(d, i, e) => {
-            if (d) {
-              console.log('Mouse enter - Index:', i, 'Data:', d, 'Event:', e)
-            } else {
-              console.log('Mouse leave - Index:', i, 'Event:', e)
-            }
-          }}
-        />
+        <LegendDonut data={donutData} />
+
         <table className="table table-striped">
           <thead>
             <tr>
