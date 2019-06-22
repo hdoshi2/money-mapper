@@ -36,10 +36,10 @@ const Transaction = db.define('transaction', {
     type: Sequelize.STRING
   },
   lat: {
-    type: Sequelize.INTEGER
+    type: Sequelize.DECIMAL
   },
   lon: {
-    type: Sequelize.INTEGER
+    type: Sequelize.DECIMAL
   }
 })
 

@@ -53,6 +53,14 @@ form div {
   width: 200px;
 }
 
-.card-columns {
+.card {
+  width: 25%;
+  margin: 10px;
+}
+
+.columnCard {
   margin: 0 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
