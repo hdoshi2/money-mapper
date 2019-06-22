@@ -20,10 +20,12 @@ export const UserHome = props => {
 
   return (
     <div>
-      <h3 className="d-flex justify-content-center">ACCOUNT SUMMARY</h3>
+      <h4 className="d-flex justify-content-center">ACCOUNT SUMMARY</h4>
 
       <div>
+        <h5 className="d-flex justify-content-center">Spending By Category</h5>
         <LegendDonut data={data} />
+        <hr />
         <div className="card-columns">
           {accounts.map(item => {
             return (
@@ -56,6 +58,7 @@ export const UserHome = props => {
             )
           })}
         </div>
+        <h5 className="d-flex justify-content-center">Transactions</h5>
         <table className="table table-striped">
           <thead>
             <tr>
