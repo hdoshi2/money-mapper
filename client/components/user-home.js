@@ -47,9 +47,8 @@ const handler = window.Plaid.create({
 })
 
 export const UserHome = props => {
-  const {email} = props
-  const {transactions} = props
-
+  const {email, transactions, accounts} = props
+  console.log('accounts', accounts)
   const donutData = getDataByCategory(transactions)
 
   return (
@@ -102,7 +101,8 @@ const mapState = state => {
   console.log('state', state)
   return {
     email: state.user.email,
-    transactions: state.transaction
+    transactions: state.transaction,
+    accounts: state.account
   }
 }
 
