@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import {getDataByCategory} from './utility'
+import LegendDonut from './LegendDonut'
 
 /**
  * COMPONENT
@@ -41,25 +43,14 @@ const handler = window.Plaid.create({
     // metadata contains information about the institution
     // that the user selected and the most recent API request IDs.
     // Storing this information can be helpful for support.
-  },
-  onEvent: function(eventName, metadata) {
-    // Optionally capture Link flow events, streamed through
-    // this callback as your users connect an Item to Plaid.
-    // For example:
-    // eventName = "TRANSITION_VIEW"
-    // metadata  = {
-    //   link_session_id: "123-abc",
-    //   mfa_type:        "questions",
-    //   timestamp:       "2017-09-14T14:42:19.350Z",
-    //   view_name:       "MFA",
-    // }
   }
 })
 
 export const UserHome = props => {
-  console.log('props', props)
   const {email} = props
   const {transactions} = props
+
+  const donutData = getDataByCategory(transactions)
 
   return (
     <div>
@@ -73,7 +64,8 @@ export const UserHome = props => {
         Link Account
       </button>
       <div>
-        <div>Account Info:</div>
+        <LegendDonut data={donutData} />
+
         <table className="table table-striped">
           <thead>
             <tr>

@@ -20,3 +20,15 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.title-header {
+  text-align: center;
+  background-color: #493843;
+  color: white;
+  /* background-color: #ef6461; */
+  /* background-color: #00a878; */
+  /* background-color: #d5a021; */
+  margin: 0;
+  height: 100%;
+  padding: 10px 0 10px 0;
+}

@@ -65,7 +65,7 @@ router.post('/get_access_token', function(request, response, next) {
             await Transaction.create({
               account_id: transaction.account_id,
               name: transaction.name,
-              amount: transaction.amount,
+              amount: transaction.amount.toFixed(2),
               category1: transaction.category[0],
               category2: transaction.category[1],
               date: transaction.date,
