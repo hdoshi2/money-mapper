@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import {fetchTranscations, fetchAccounts} from '../store'
 import {getDataByCategory} from './utility'
 import LegendDonut from './LegendDonut'
 
@@ -9,47 +10,30 @@ import LegendDonut from './LegendDonut'
  * COMPONENT
  */
 
-const handler = window.Plaid.create({
-  clientName: 'Plaid Quickstart',
-  countryCodes: ['US'],
-  env: 'sandbox',
-  // Replace with your public_key from the Dashboard
-  key: '962158d31d9a8e0bdc787718aa471e',
-  product: ['transactions'],
-  // Optional, use webhooks to get transaction and error updates
-  // webhook: 'https://requestb.in',
-  language: 'en',
-  // Optional, specify a user object to enable all Auth features
-  user: {
-    legalName: 'John Appleseed',
-    emailAddress: 'jappleseed@yourapp.com'
-  },
-  onLoad: function() {
-    // Optional, called when Link loads
-  },
-  onSuccess: function(public_token, metadata) {
-    console.log('public_token', public_token)
-    console.log('metadata', metadata)
-
-    axios.post('/api/link/get_access_token', {
-      public_token
-    })
-  },
-  onExit: function(err, metadata) {
-    // The user exited the Link flow.
-    if (err != null) {
-      // The user encountered a Plaid API error prior to exiting.
-    }
-    // metadata contains information about the institution
-    // that the user selected and the most recent API request IDs.
-    // Storing this information can be helpful for support.
-  }
-})
-
 export const UserHome = props => {
   const {email, transactions, accounts} = props
   console.log('accounts', accounts)
   const donutData = getDataByCategory(transactions)
+
+  const handler = window.Plaid.create({
+    clientName: 'Plaid Quickstart',
+    countryCodes: ['US'],
+    env: 'sandbox',
+    key: '962158d31d9a8e0bdc787718aa471e',
+    product: ['transactions'],
+    language: 'en',
+    onSuccess: function(public_token, metadata) {
+      axios.post('/api/link/get_access_token', {
+        public_token
+      })
+    },
+    onExit: function(err, metadata) {
+      // The user exited the Link flow.
+      if (err != null) {
+        // The user encountered a Plaid API error prior to exiting.
+      }
+    }
+  })
 
   return (
     <div>
@@ -137,7 +121,16 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(UserHome)
+const mapDispatch = dispatch => {
+  return {
+    loadNewData() {
+      dispatch(fetchTranscations())
+      dispatch(fetchAccounts())
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(UserHome)
 
 /**
  * PROP TYPES

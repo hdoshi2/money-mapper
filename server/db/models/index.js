@@ -23,6 +23,9 @@ User.hasMany(Item)
 Transaction.belongsTo(User)
 User.hasMany(Item)
 
+Account.belongsTo(User)
+User.hasMany(Account)
+
 Transaction.belongsTo(Account)
 Account.hasMany(Transaction)
 

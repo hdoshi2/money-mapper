@@ -11,16 +11,22 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       {isLoggedIn ? (
         <div className="d-flex justify-content-around">
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
+          <Link className="btn btn-primary" to="/home">
+            Home
+          </Link>
+          <a className="btn btn-primary" href="#" onClick={handleClick}>
             Logout
           </a>
         </div>
       ) : (
         <div className="d-flex justify-content-around">
           {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link className="btn btn-primary" to="/login">
+            Login
+          </Link>
+          <Link className="btn btn-primary" to="/signup">
+            Sign Up
+          </Link>
         </div>
       )}
     </nav>

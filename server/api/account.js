@@ -5,9 +5,9 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const account = await Account.findAll({
-      // where: {
-      //   userId: req.user.id
-      // },
+      where: {
+        userId: req.user.id
+      }
     })
     res.json(account)
   } catch (err) {

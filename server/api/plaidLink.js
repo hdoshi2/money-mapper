@@ -63,6 +63,7 @@ router.post('/get_access_token', function(request, response, next) {
 
           const addToTransaction = transcations.map(async transaction => {
             await Transaction.create({
+              userId: request.user.id,
               account_id: transaction.account_id,
               name: transaction.name,
               amount: transaction.amount.toFixed(2),
@@ -80,6 +81,7 @@ router.post('/get_access_token', function(request, response, next) {
           })
           const addToAccount = account.map(async acc => {
             await Account.create({
+              userId: request.user.id,
               accountId: acc.account_id,
               name: acc.name,
               officialName: acc.official_name,
