@@ -64,7 +64,38 @@ export const UserHome = props => {
       </button>
       <div>
         <LegendDonut data={donutData} />
-
+        <div className="card-columns">
+          {accounts.map(item => {
+            return (
+              <div
+                className="card"
+                key={item.id}
+                className="card text-white bg-info mb-3"
+              >
+                <div className="card-body">
+                  <div>
+                    <h5 className="card-title">{item.name}</h5>
+                    <p className="card-text">{item.officialName}</p>
+                  </div>
+                </div>
+                <table className="card-table table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Type</th>
+                      <th scope="col">Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{item.type}</td>
+                      <td>${item.balanceCurrent}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )
+          })}
+        </div>
         <table className="table table-striped">
           <thead>
             <tr>

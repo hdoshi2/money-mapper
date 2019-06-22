@@ -6,10 +6,10 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div className="header">
-    <h1 className="title-header">Money Mapper</h1>
+    <h1 className="d-flex justify-content-center">Money Mapper</h1>
     <nav>
       {isLoggedIn ? (
-        <div>
+        <div className="d-flex justify-content-around">
           {/* The navbar will show these links after you log in */}
           <Link to="/home">Home</Link>
           <a href="#" onClick={handleClick}>
@@ -17,7 +17,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           </a>
         </div>
       ) : (
-        <div>
+        <div className="d-flex justify-content-around">
           {/* The navbar will show these links before you log in */}
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>

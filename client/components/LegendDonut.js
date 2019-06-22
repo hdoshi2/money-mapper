@@ -31,7 +31,7 @@ class LegendDonut extends React.PureComponent {
     const {data} = this.props
     const width = 600
     return (
-      <div>
+      <div className="legend-donut">
         <Donut
           data={data}
           height={width}
