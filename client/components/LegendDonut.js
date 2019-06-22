@@ -40,6 +40,7 @@ class LegendDonut extends React.PureComponent {
           internalRadius={width / 5}
           isAnimated={false}
           highlightSliceById={this.state.highlightedSlice}
+          hasFixedHighlightedSlice={true}
           customMouseOver={this._handleMouseOver.bind(this)}
           customMouseOut={this._handleMouseOut.bind(this)}
         />
@@ -49,6 +50,8 @@ class LegendDonut extends React.PureComponent {
           width={width}
           margin={legendMargin}
           highlightEntryById={this.state.highlightedSlice}
+          unit=" Dollar"
+          numberFormat=","
         />
       </div>
     )

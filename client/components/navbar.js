@@ -11,8 +11,11 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       {isLoggedIn ? (
         <div className="d-flex justify-content-around">
           {/* The navbar will show these links after you log in */}
-          <Link className="btn btn-primary" to="/home">
-            Home
+          <Link className="btn btn-primary" to="/linkAccount">
+            Link Account
+          </Link>
+          <Link className="btn btn-primary" to="/account">
+            Account
           </Link>
           <a className="btn btn-primary" href="#" onClick={handleClick}>
             Logout

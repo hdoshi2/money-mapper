@@ -1,7 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import axios from 'axios'
 import {fetchTranscations, fetchAccounts} from '../store'
 import {getDataByCategory} from './utility'
 import LegendDonut from './LegendDonut'
@@ -11,43 +10,20 @@ import LegendDonut from './LegendDonut'
  */
 
 export const UserHome = props => {
-  const {email, transactions, accounts} = props
-  console.log('accounts', accounts)
-  const donutData = getDataByCategory(transactions)
+  const {transactions, accounts} = props
+  const data = getDataByCategory(transactions)
 
-  const handler = window.Plaid.create({
-    clientName: 'Plaid Quickstart',
-    countryCodes: ['US'],
-    env: 'sandbox',
-    key: '962158d31d9a8e0bdc787718aa471e',
-    product: ['transactions'],
-    language: 'en',
-    onSuccess: function(public_token, metadata) {
-      axios.post('/api/link/get_access_token', {
-        public_token
-      })
-    },
-    onExit: function(err, metadata) {
-      // The user exited the Link flow.
-      if (err != null) {
-        // The user encountered a Plaid API error prior to exiting.
-      }
-    }
-  })
+  //implementing react hooks
+  useEffect(() => {
+    props.loadNewData()
+  }, [])
 
   return (
     <div>
-      <h3>Welcome, {email}</h3>
-      <button
-        id="link-button"
-        type="button"
-        className="btn btn-primary"
-        onClick={() => handler.open()}
-      >
-        Link Account
-      </button>
+      <h3 className="d-flex justify-content-center">ACCOUNT SUMMARY</h3>
+
       <div>
-        <LegendDonut data={donutData} />
+        <LegendDonut data={data} />
         <div className="card-columns">
           {accounts.map(item => {
             return (
@@ -113,9 +89,7 @@ export const UserHome = props => {
  * CONTAINER
  */
 const mapState = state => {
-  console.log('state', state)
   return {
-    email: state.user.email,
     transactions: state.transaction,
     accounts: state.account
   }

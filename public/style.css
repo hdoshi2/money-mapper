@@ -1,6 +1,7 @@
 body {
   display: flex;
   align-items: center;
+  margin: 40px;
 }
 
 a {
@@ -21,6 +22,10 @@ form div {
   display: inline-block;
 }
 
+.header {
+  width: 100vw;
+}
+
 .title-header {
   text-align: center;
   background-color: #493843;
@@ -34,7 +39,20 @@ form div {
 }
 
 .legend-donut {
-  width: 70%;
+  width: 600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-btn {
+  width: 200px;
+}
+
+.card-columns {
+  margin: 0 40px;
 }
