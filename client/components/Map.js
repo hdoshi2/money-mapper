@@ -8,6 +8,7 @@ import MapGL, {
 } from 'react-map-gl'
 import {getMapdata} from './utility'
 import TransactionInfo from './TransactionInfo'
+import TransactionsTable from './TransactionsTable'
 const token =
   'pk.eyJ1IjoiaGRvc2hpMiIsImEiOiJjang4NW9pMWYwN25kM3RwdTNtZmFzdnI3In0._DAxCZKSd5sGa9BevwtqNQ'
 
@@ -81,7 +82,10 @@ class Map extends Component {
   }
 
   render() {
-    const transactions = getMapdata(this.props.transactions)
+    let {transactions} = this.props
+    transactions = transactions.filter(({lat}) => lat !== null)
+    const filteredTrans = getMapdata(this.props.transactions)
+    console.log('props', this.props)
     return (
       <div className="map-container">
         <MapGL
@@ -90,7 +94,7 @@ class Map extends Component {
           {...this.state.viewport}
           onViewportChange={this._updateViewport}
         >
-          {transactions.map(this._renderTransactionMarker)}
+          {filteredTrans.map(this._renderTransactionMarker)}
           {this._renderPopup()}
           <div className="navMap" style={navStyle}>
             <NavigationControl />
@@ -99,6 +103,11 @@ class Map extends Component {
             <FullscreenControl />
           </div>
         </MapGL>
+        <br />
+        <br />
+        <div>
+          <TransactionsTable transactions={transactions} />
+        </div>
       </div>
     )
   }

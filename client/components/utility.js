@@ -35,7 +35,6 @@ export const getDataByCategory = transactions => {
 }
 
 export const getMapdata = transactions => {
-  transactions = transactions.filter(({lat}) => lat !== null)
   const groupByName = _.groupBy(transactions, 'name')
   const placeName = Object.keys(groupByName)
   const data = []
