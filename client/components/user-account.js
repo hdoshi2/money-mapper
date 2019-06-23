@@ -75,7 +75,7 @@ export const UserHome = props => {
                 <tr key={item.id}>
                   <th scope="row">{item.date}</th>
                   <td>{item.name}</td>
-                  <td>{item.amount}</td>
+                  <td>${item.amount}</td>
                   <td>{item.category1}</td>
                   <td>{item.category2}</td>
                 </tr>

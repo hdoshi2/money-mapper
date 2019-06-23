@@ -1,13 +1,16 @@
 body {
   display: flex;
   align-items: center;
-  margin: 190px;
 }
 
 a {
   text-decoration: none;
 }
 
+#app {
+  background-color: rgb(228, 230, 231);
+  height: 100vh;
+}
 label {
   display: block;
 }

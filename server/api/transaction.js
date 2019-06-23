@@ -7,7 +7,8 @@ router.get('/', async (req, res, next) => {
     const transaction = await Transaction.findAll({
       where: {
         userId: req.user.id
-      }
+      },
+      order: [['date', 'DESC']]
     })
     res.json(transaction)
   } catch (err) {
