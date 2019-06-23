@@ -6,37 +6,39 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div className="header">
-    <h1 className="d-flex justify-content-center">Money Mapper</h1>
-    <nav>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+      <div>
+        <img className="navbar-img" src="/money.png" />
+        <h1 className="navbar-brand">Money Mapper</h1>
+      </div>
       {isLoggedIn ? (
-        <div className="d-flex justify-content-around">
+        <div className="navbar-nav">
           {/* The navbar will show these links after you log in */}
-          <Link className="btn btn-primary" to="/linkAccount">
+          <Link className="nav-link" to="/linkAccount">
             Link Account
           </Link>
-          <Link className="btn btn-primary" to="/account">
+          <Link className="nav-link" to="/account">
             Account
           </Link>
-          <Link className="btn btn-primary" to="/map">
+          <Link className="nav-link" to="/map">
             Map
           </Link>
-          <a className="btn btn-primary" href="#" onClick={handleClick}>
+          <a className="nav-link" href="#" onClick={handleClick}>
             Logout
           </a>
         </div>
       ) : (
-        <div className="d-flex justify-content-around">
+        <div className="navbar-nav">
           {/* The navbar will show these links before you log in */}
-          <Link className="btn btn-primary" to="/login">
+          <Link className="nav-link" to="/login">
             Login
           </Link>
-          <Link className="btn btn-primary" to="/signup">
+          <Link className="nav-link" to="/signup">
             Sign Up
           </Link>
         </div>
       )}
     </nav>
-    <hr />
   </div>
 )
 
