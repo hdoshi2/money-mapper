@@ -64,6 +64,9 @@ form div {
 .card {
   width: 25%;
   margin: 10px;
+}
+
+.form-card {
   margin: auto;
 }
 

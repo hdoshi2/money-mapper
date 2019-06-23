@@ -51,7 +51,7 @@ export const UserHome = props => {
                   <tbody>
                     <tr>
                       <td>{item.type}</td>
-                      <td>${item.balanceCurrent}</td>
+                      <td>${Number(item.balanceCurrent).toFixed(2)}</td>
                     </tr>
                   </tbody>
                 </table>
