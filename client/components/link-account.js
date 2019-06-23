@@ -34,24 +34,64 @@ export const UserHome = props => {
 
   return (
     <div className="home">
-      <h3>Welcome, {email}</h3>
+      {/* <h3>Welcome, {email}</h3> */}
       <button
         id="link-button"
         type="button"
         className="btn btn-primary link-btn"
         onClick={() => handler.open()}
       >
-        Link Account
+        Link Account With PLAID
       </button>
-      <div className="container mb-3">
+      {/* <div className="plaid-center">
         <div className="row">
-          <div className="col-sm-4">1 of 2</div>
-          <div className="col-sm-4">2 of 2</div>
+          <div className="col-sm-4">
+            <img src="https://plaid.com/assets/img/docs/quickstart/item-overview-01.png" />
+          </div>
+          <div className="col-sm-4">
+            <img src="https://plaid.com/assets/img/docs/quickstart/item-overview-02.png" />
+          </div>
         </div>
         <div className="row">
-          <div className="col-sm-4">1 of 3</div>
-          <div className="col-sm-4">2 of 3</div>
-          <div className="col-sm-4">3 of 3</div>
+          <div className="col-sm-4">
+            <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-01.png" />
+          </div>
+          <div className="col-sm-4">
+            <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-02.png" />
+          </div>
+          <div className="col-sm-4">
+            <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-03.png" />
+          </div>
+        </div>
+      </div> */}
+      <div className="plaid-center">
+        <h2>Item overview</h2>
+        <p>
+          Your user can have multiple Items, or sets of credentials. Each Item
+          can have many associated accounts, which hold information such as
+          balance, name, and account type.{' '}
+        </p>
+        <div>
+          <img src="https://plaid.com/assets/img/docs/quickstart/item-overview-01.png" />
+        </div>
+        <div>
+          <img src="https://plaid.com/assets/img/docs/quickstart/item-overview-02.png" />
+        </div>
+        <hr />
+        <h2>Item creation flow</h2>
+        <p>
+          An end-to-end integration involves client-side and server-side
+          configurations. Below is a brief overview of how you'll be creating
+          Items with Link.
+        </p>
+        <div>
+          <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-01.png" />
+        </div>
+        <div>
+          <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-02.png" />
+        </div>
+        <div>
+          <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-03.png" />
         </div>
       </div>
     </div>

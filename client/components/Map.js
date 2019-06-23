@@ -32,7 +32,7 @@ class Map extends Component {
       height: 600,
       latitude: 40.7128,
       longitude: -74.006,
-      zoom: 11,
+      zoom: 12,
       bearing: 0,
       pitch: 0
     },
@@ -83,21 +83,23 @@ class Map extends Component {
   render() {
     const transactions = getMapdata(this.props.transactions)
     return (
-      <MapGL
-        mapboxApiAccessToken={token}
-        mapStyle="mapbox://styles/mapbox/dark-v9"
-        {...this.state.viewport}
-        onViewportChange={this._updateViewport}
-      >
-        {transactions.map(this._renderTransactionMarker)}
-        {this._renderPopup()}
-        <div className="navMap" style={navStyle}>
-          <NavigationControl />
-        </div>
-        <div className="fullscreen" style={fullscreenControlStyle}>
-          <FullscreenControl />
-        </div>
-      </MapGL>
+      <div className="map-container">
+        <MapGL
+          mapboxApiAccessToken={token}
+          mapStyle="mapbox://styles/mapbox/dark-v9"
+          {...this.state.viewport}
+          onViewportChange={this._updateViewport}
+        >
+          {transactions.map(this._renderTransactionMarker)}
+          {this._renderPopup()}
+          <div className="navMap" style={navStyle}>
+            <NavigationControl />
+          </div>
+          <div className="fullscreen" style={fullscreenControlStyle}>
+            <FullscreenControl />
+          </div>
+        </MapGL>
+      </div>
     )
   }
 }

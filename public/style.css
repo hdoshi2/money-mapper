@@ -1,7 +1,7 @@
 body {
   display: flex;
   align-items: center;
-  margin: 40px;
+  margin: 190px;
 }
 
 a {
@@ -24,6 +24,7 @@ form div {
 
 .header {
   width: 100vw;
+  margin-bottom: 40px;
 }
 
 .title-header {
@@ -35,7 +36,7 @@ form div {
   /* background-color: #d5a021; */
   margin: 0;
   height: 100%;
-  padding: 10px 0 10px 0;
+  padding: 50px 0 50px 0;
 }
 
 .legend-donut {
@@ -88,4 +89,32 @@ form div {
   color: #6b6b76;
   text-transform: uppercase;
   outline: none;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.plaid-center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 10px;
+  margin: 50px;
+  padding: 50px;
+}
+
+.form-card {
+  margin: auto;
+}
+
+.map-container {
+  margin-left: 40px;
+}
+
+.navbar-img {
+  height: 40px;
+  padding-right: 10px;
 }
