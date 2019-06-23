@@ -103,15 +103,15 @@ async function seed() {
   })
   const hariCredit = await Account.create({
     accountId: 'hariChaseCredit',
-    balanceCurrent: 1495.0,
-    balanceAvailable: 2000,
-    name: 'Chase Credit Card',
+    balanceCurrent: 1495.23,
+    balanceAvailable: 7000,
+    name: 'Citi AAdvantage Platinum Mastercard',
     type: 'Credit Card',
     userId: hari.id
   })
   const hariSaving = await Account.create({
     accountId: 'hariChaseSaving',
-    balanceCurrent: 5230.0,
+    balanceCurrent: 5230.31,
     balanceAvailable: 10000,
     name: 'Ally Bank Saving',
     type: 'Savings',
