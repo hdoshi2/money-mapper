@@ -51,6 +51,7 @@ form div {
 .home {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .link-btn {
@@ -106,7 +107,7 @@ form div {
   display: flex;
   align-items: center;
   margin: 20px;
-  background-color: white;
+  height: 100vh;
 }
 
 .plaid-center {

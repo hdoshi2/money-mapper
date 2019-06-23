@@ -43,56 +43,17 @@ export const UserHome = props => {
       >
         Link Account With PLAID
       </button>
-      {/* <div className="plaid-center">
-        <div className="row">
-          <div className="col-sm-4">
-            <img src="https://plaid.com/assets/img/docs/quickstart/item-overview-01.png" />
-          </div>
-          <div className="col-sm-4">
-            <img src="https://plaid.com/assets/img/docs/quickstart/item-overview-02.png" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-4">
-            <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-01.png" />
-          </div>
-          <div className="col-sm-4">
-            <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-02.png" />
-          </div>
-          <div className="col-sm-4">
-            <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-03.png" />
-          </div>
-        </div>
-      </div> */}
-      <div className="plaid-center">
-        <h2>Item overview</h2>
+      <br />
+      <h3>Link multiple financial accounts for continuous data integration.</h3>
+      <div>
+        <div>Testing Note:</div>
         <p>
-          Your user can have multiple Items, or sets of credentials. Each Item
-          can have many associated accounts, which hold information such as
-          balance, name, and account type.{' '}
+          To sync with a sandbox account use the following banking credentials:
         </p>
-        <div>
-          <img src="https://plaid.com/assets/img/docs/quickstart/item-overview-01.png" />
-        </div>
-        <div>
-          <img src="https://plaid.com/assets/img/docs/quickstart/item-overview-02.png" />
-        </div>
-        <hr />
-        <h2>Item creation flow</h2>
-        <p>
-          An end-to-end integration involves client-side and server-side
-          configurations. Below is a brief overview of how you'll be creating
-          Items with Link.
-        </p>
-        <div>
-          <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-01.png" />
-        </div>
-        <div>
-          <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-02.png" />
-        </div>
-        <div>
-          <img src="https://plaid.com/assets/img/docs/quickstart/item-creation-03.png" />
-        </div>
+        <ul>
+          <li>User Name: user_good</li>
+          <li>Password: pass_good</li>
+        </ul>
       </div>
     </div>
   )
