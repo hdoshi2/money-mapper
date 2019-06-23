@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {fetchTranscations, fetchAccounts} from '../store'
 import {getDataByCategory} from './utility'
 import LegendDonut from './LegendDonut'
-import Map from './Map'
 
 /**
  * COMPONENT
@@ -25,7 +24,6 @@ export const UserHome = props => {
 
       <div>
         <h5 className="d-flex justify-content-center">Spending By Category</h5>
-        <Map />
         <LegendDonut data={data} />
         <hr />
         <div className="columnCard">

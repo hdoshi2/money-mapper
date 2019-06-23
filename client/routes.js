@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
+import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, UserAccount} from './components'
+import {Login, Signup, UserHome, UserAccount, Map} from './components'
 import {me} from './store'
 
 /**
@@ -26,6 +26,7 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/" component={UserAccount} />
             <Route path="/account" component={UserAccount} />
+            <Route path="/map" component={Map} />
             <Route path="/linkAccount" component={UserHome} />
           </Switch>
         )}

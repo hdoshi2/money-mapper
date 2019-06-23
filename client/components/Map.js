@@ -5,8 +5,8 @@ const cities = [
     image:
       'http://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Gotham.jpg/240px-Above_Gotham.jpg',
     state: 'New York',
-    latitude: 40.6643,
-    longitude: -73.9385
+    latitude: 40.7128,
+    longitude: -74.006
   },
   {
     city: 'Los Angeles',
@@ -209,14 +209,13 @@ const navStyle = {
 class Map extends Component {
   state = {
     viewport: {
-      width: 600,
+      width: 1000,
       height: 600,
-      latitude: 40.73,
-      longitude: -73.93,
+      latitude: 40.7128,
+      longitude: -74.006,
       zoom: 11,
       bearing: 0,
       pitch: 0
-      // mapStyle: 'mapbox://styles/hdoshi2/cjx8atpt81ii21cmvydfh2e0i'
     },
     popupInfo: null
   }
@@ -231,6 +230,8 @@ class Map extends Component {
         key={`marker-${index}`}
         longitude={city.longitude}
         latitude={city.latitude}
+        offsetLeft={-20}
+        offsetTop={-10}
       >
         <img
           className="mapPin"
@@ -264,7 +265,7 @@ class Map extends Component {
     return (
       <MapGL
         mapboxApiAccessToken={token}
-        mapStyle="mapbox://styles/hdoshi2/cjx8atpt81ii21cmvydfh2e0i"
+        mapStyle="mapbox://styles/mapbox/dark-v9"
         {...this.state.viewport}
         onViewportChange={this._updateViewport}
       >
