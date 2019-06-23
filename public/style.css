@@ -9,7 +9,7 @@ a {
 
 #app {
   background-color: rgb(228, 230, 231);
-  height: 100vh;
+  height: 100%;
 }
 label {
   display: block;
@@ -57,9 +57,14 @@ form div {
   width: 200px;
 }
 
+.form-container {
+  height: 100vh;
+}
+
 .card {
   width: 25%;
   margin: 10px;
+  margin: auto;
 }
 
 .columnCard {
@@ -98,6 +103,7 @@ form div {
   display: flex;
   align-items: center;
   margin: 20px;
+  background-color: white;
 }
 
 .plaid-center {
@@ -107,10 +113,6 @@ form div {
   height: 10px;
   margin: 50px;
   padding: 50px;
-}
-
-.form-card {
-  margin: auto;
 }
 
 .map-container {

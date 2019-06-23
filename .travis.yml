@@ -20,10 +20,10 @@ script:
   - npm run build-client # make the bundle
 
 # before_deploy:
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+  - rm -rf node_modules # omit from the tarball, since we skip cleanup
+deploy:
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  app: money-mapper-stackathon # see README
+  api_key:
+    secure: c1ycJ4MOydyP0E+VNUOAt+a3kOWJ6s6x7XIuUXf3aVUy9qfVy+2WQZ8SpRPN2y4Qny1cQeOgBP5+2eaUOKqeWTZpNRnohU+nqiv0Hs6qXv/UTZDhA6j2awzvqVWUJWPi9jiMhFbMFZz3m1i2HO8mbR41SMynWt7fz5fWutk3FDEy6GOWVo+KRyExxpeVwX3s3CU6Dk8wBMJbormp0aDsut6OBna14B9wyG7pdhdnH8BON0dLJPBfyPhwTDpmVHlUl2mMjaQFQu1/IAHDp5ARGWKqHT6vaveMKWXLVLAaXNOpulKrX9ekqPiMG3xN8gPQLigW6FZl6Sm0++khWV1bpl6pe4s4kFDMmhAA+fWV9+9rPAiMMA+6O1HICzxKxMU1hFGB2M5GE/RpigukYoHuDdNCaeyHT96Hw1y9Ee9tSXI7/aRAitnrQLqzpMVgwrad9q9qdmkIdy5gyNLi+3ZjDlJ87UQFAJXzVNQllH0rUm6cdnOHKI+JXzeChpvzyHYz/MXRqLUNvkOIssVjHBMv8pwaI8Sj+IsKdwAmy+e9H2zYk58PzZNFPo89KPd+aoqInvLy6dA/VGGQsRX5TLcNyxnu8yySRAwo5ydC2jKKBmKCaB1MugtASC2Hbj+Sea9RlxQEynCLhacX8W2ndcwjbOhYeD/ueT3rq28dC56zlys= # see README
