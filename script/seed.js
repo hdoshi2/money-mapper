@@ -3,7 +3,6 @@
 const db = require('../server/db')
 const {User, Item, Account, Transaction} = require('../server/db/models')
 
-const payday = ['2019-05-11', '2019-05-25', '2019-06-08', '2019-06-22']
 const onceAMonth = ['2019-05-01', '2019-06-01']
 
 const coffeeShop = [
@@ -18,14 +17,20 @@ const restaurant = [
   {name: 'Open Market', lat: 40.705715, lon: -74.010096},
   {name: 'Dig In', lat: 40.705199, lon: -74.014841},
   {name: 'Buddha Bodhai', lat: 40.716485, lon: -74.999291},
-  {name: `Blaze`, lat: 40.428712, lon: -74.169021}
+  {name: `Blaze`, lat: 40.428712, lon: -74.169021},
+  {name: 'Beyond Sushi', lat: 40.7442492, lon: -74.006212},
+  {name: 'Artichoke Basille Pizza', lat: 40.74426, lon: -74.006212},
+  {name: 'Pondicheri', lat: 40.744528, lon: -73.988048}
 ]
 const grocery = [
   {name: 'Whole Foods', lat: 40.74071, lon: -74.171112},
   {name: `Trader Joe's`, lat: 40.723432, lon: -74.296189}
 ]
 
-const shops = [{name: 'Amazon', lat: 47.616308, lon: -122.339236}]
+const shops = [
+  {name: 'Amazon', lat: 47.616308, lon: -122.339236},
+  {name: 'Zara', lat: 40.736526, lon: -73.991265}
+]
 
 function randomStore(category) {
   return category[Math.floor(Math.random() * category.length)]
@@ -103,15 +108,15 @@ async function seed() {
   })
   const hariCredit = await Account.create({
     accountId: 'hariChaseCredit',
-    balanceCurrent: 1495.0,
-    balanceAvailable: 2000,
-    name: 'Chase Credit Card',
+    balanceCurrent: 1495.23,
+    balanceAvailable: 7000,
+    name: 'Citi AAdvantage Platinum Mastercard',
     type: 'Credit Card',
     userId: hari.id
   })
   const hariSaving = await Account.create({
     accountId: 'hariChaseSaving',
-    balanceCurrent: 5230.0,
+    balanceCurrent: 5230.31,
     balanceAvailable: 10000,
     name: 'Ally Bank Saving',
     type: 'Savings',
@@ -146,28 +151,6 @@ async function seed() {
   /*-------------------- TRANSACTIONS ---------------------*/
 
   const allTransactions = [
-    ...payday.map(day => {
-      return {
-        name: 'Google Payroll',
-        amount: -2200,
-        date: day,
-        account_id: guestChecking.accountId,
-        category1: 'Transfer',
-        category2: 'Payroll',
-        userId: guest.id
-      }
-    }),
-    ...payday.map(day => {
-      return {
-        name: 'Google Payroll',
-        amount: -500,
-        date: day,
-        account_id: guestSaving.accountId,
-        category1: 'Transfer',
-        category2: 'Payroll',
-        userId: guest.id
-      }
-    }),
     ...onceAMonth.map(day => {
       return {
         name: 'Credit Card Payment',
@@ -278,28 +261,6 @@ async function seed() {
       }
     }),
     /*----------- HARI SEED FILE-----------------*/
-    ...payday.map(day => {
-      return {
-        name: 'Facebook Payroll',
-        amount: -2200,
-        date: day,
-        account_id: hariChecking.accountId,
-        category1: 'Transfer',
-        category2: 'Payroll',
-        userId: hari.id
-      }
-    }),
-    ...payday.map(day => {
-      return {
-        name: 'FacebookPayroll',
-        amount: -500,
-        date: day,
-        account_id: hariSaving.accountId,
-        category1: 'Transfer',
-        category2: 'Payroll',
-        userId: hari.id
-      }
-    }),
     ...onceAMonth.map(day => {
       return {
         name: 'Credit Card Payment',
@@ -333,7 +294,7 @@ async function seed() {
         userId: hari.id
       }
     }),
-    ...doTimes(30).map(day => {
+    ...doTimes(35).map(day => {
       const {name, lat, lon} = randomStore(coffeeShop)
       return {
         name,
@@ -347,7 +308,7 @@ async function seed() {
         lon
       }
     }),
-    ...doTimes(30).map(day => {
+    ...doTimes(40).map(day => {
       const {name, lat, lon} = randomStore(restaurant)
       return {
         name,
@@ -391,7 +352,7 @@ async function seed() {
     }),
     {
       name: 'United Airlines',
-      amount: 350,
+      amount: 826,
       date: '2018-06-19',
       account_id: hariCredit.accountId,
       category1: 'Travel',
