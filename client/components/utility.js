@@ -33,3 +33,24 @@ export const getDataByCategory = transactions => {
   })
   return data
 }
+
+export const getMapdata = transactions => {
+  transactions = transactions.filter(({lat}) => lat !== null)
+  const groupByName = _.groupBy(transactions, 'name')
+  const placeName = Object.keys(groupByName)
+  const data = []
+
+  placeName.forEach(name => {
+    const amount = getTotalexpense(groupByName[name])
+    const {category1, category2, lat, lon} = groupByName[name][0]
+    data.push({
+      name,
+      amount,
+      category1,
+      category2,
+      lat: +lat,
+      lon: +lon
+    })
+  })
+  return data
+}
