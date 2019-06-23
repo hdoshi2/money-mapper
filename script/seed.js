@@ -33,7 +33,7 @@ function randomStore(category) {
 
 function randomDate(start, end) {
   var d = new Date(
-      start.getTime() + Math.random() * 2 * (end.getTime() - start.getTime())
+      start.getTime() + Math.random() * (end.getTime() - start.getTime())
     ),
     month = '' + d.getMonth(),
     day = '' + d.getDate(),
@@ -95,45 +95,51 @@ async function seed() {
   /*-------------------- ACCOUNTS ----------------------*/
   const hariChecking = await Account.create({
     accountId: 'hariChaseAccount',
-    balanceCurrent: 5000,
+    balanceCurrent: 3948.45,
     balanceAvailable: 5000,
     name: 'Chase Checking',
+    type: 'Checking',
     userId: hari.id
   })
   const hariCredit = await Account.create({
     accountId: 'hariChaseCredit',
-    balanceCurrent: 2000,
+    balanceCurrent: 1495.0,
     balanceAvailable: 2000,
     name: 'Chase Credit Card',
+    type: 'Credit Card',
     userId: hari.id
   })
   const hariSaving = await Account.create({
     accountId: 'hariChaseSaving',
-    balanceCurrent: 10000,
+    balanceCurrent: 5230.0,
     balanceAvailable: 10000,
-    name: 'Chase Saving',
+    name: 'Ally Bank Saving',
+    type: 'Savings',
     userId: hari.id
   })
 
   const guestChecking = await Account.create({
     accountId: 'guestChaseChecking',
-    balanceCurrent: 4000,
+    balanceCurrent: 3948.89,
     balanceAvailable: 4000,
     name: 'Bank of America Checking',
+    type: 'Checking',
     userId: guest.id
   })
   const guestCredit = await Account.create({
     accountId: 'guestChaseCredit',
-    balanceCurrent: 3000,
+    balanceCurrent: 2938.36,
     balanceAvailable: 3000,
-    name: 'Bank of America Credit Card',
+    name: 'Chase Sapphire Credit Card',
+    type: 'Credit Card',
     userId: guest.id
   })
   const guestSaving = await Account.create({
     accountId: 'guestChaseSaving',
-    balanceCurrent: 12000,
+    balanceCurrent: 6907.23,
     balanceAvailable: 12000,
     name: 'Bank of America Saving',
+    type: 'Savings',
     userId: guest.id
   })
 
