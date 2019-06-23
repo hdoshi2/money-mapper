@@ -31,6 +31,5 @@ export const getDataByCategory = transactions => {
       percentage: averagePercentByCategory
     })
   })
-  console.log('data', data)
   return data
 }

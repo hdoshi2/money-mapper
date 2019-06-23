@@ -8,8 +8,7 @@ import axios from 'axios'
  */
 
 export const UserHome = props => {
-  const {email, accounts} = props
-  console.log('accounts', accounts)
+  const {email} = props
 
   const handler = window.Plaid.create({
     clientName: 'Plaid Quickstart',
@@ -63,7 +62,6 @@ export const UserHome = props => {
  * CONTAINER
  */
 const mapState = state => {
-  console.log('state', state)
   return {
     email: state.user.email,
     transactions: state.transaction,
