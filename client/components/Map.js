@@ -50,7 +50,7 @@ class Map extends Component {
         key={`marker-${index}`}
         longitude={transaction.lon}
         latitude={transaction.lat}
-        offsetLeft={-20}
+        offsetLeft={-10}
         offsetTop={-10}
       >
         <img
