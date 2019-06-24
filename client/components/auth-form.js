@@ -7,7 +7,7 @@ import {auth} from '../store'
  * COMPONENT
  */
 const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+  const {name, displayName, handleSubmit, error, sandboxLogin} = props
 
   return (
     <div className="form-container">
@@ -41,7 +41,13 @@ const AuthForm = props => {
           {error && error.response && <div> {error.response.data} </div>}
         </form>
         {/* <a href="/auth/google">{displayName} with Google</a> */}
+        <div>{sandboxLogin}</div>
       </div>
+      {/* <div>
+        <div>Testing Mode:</div>
+        <div>Email: guest@email.com</div>
+        <div>Password: 1234</div>
+      </div> */}
     </div>
   )
 }
@@ -57,7 +63,8 @@ const mapLogin = state => {
   return {
     name: 'login',
     displayName: 'Login',
-    error: state.user.error
+    error: state.user.error,
+    sandboxLogin: 'Testing Mode: Email: guest@email.com, Password: 1234'
   }
 }
 
