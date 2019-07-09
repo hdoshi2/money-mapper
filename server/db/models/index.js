@@ -1,7 +1,7 @@
 const User = require('./user')
 const Transaction = require('./transaction')
 const Account = require('./account')
-const Item = require('./item')
+const Item = require('./Item')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
