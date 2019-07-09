@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Item, Account, Transaction} = require('../server/db/models')
+const {User, Account, Transaction, Item} = require('../server/db/models')
 
 const onceAMonth = ['2019-05-01', '2019-06-01']
 

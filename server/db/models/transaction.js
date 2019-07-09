@@ -43,4 +43,13 @@ const Transaction = db.define('transaction', {
   }
 })
 
-module.exports = Transaction
+const Item = db.define('item', {
+  item_id: {
+    type: Sequelize.STRING
+  },
+  access_token: {
+    type: Sequelize.STRING
+  }
+})
+
+module.exports = {Transaction, Item}
