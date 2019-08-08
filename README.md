@@ -4,13 +4,16 @@ The Problem: Obtaining a comprehensive picture of users' financial health is oft
 
 The Solution: Developed a personal finance application that consolidates financial data from multiple sources and categorizes transaction data using the PLAID API.
 
-* Implemented D3js to produce a dynamic and interactive pie chart that categorizes expenditures in a visually appealing manner.
+## Features
 
-* Implemented MapBox API for a fun twist to dynamically link PLAID API data and view expense occurrences on a map.
+* Displays current account and transactions data via third party API, Plaid
+* Implemented D3js to produce a dynamic and interactive pie chart that categorizes expenditures in a visually appealing manner
+* Creates account summaries for all the different accounts synced using PLAID
+* View expense occurrences on a map using MapBox API (from geo-location provived by the PLAID API)
 
 [Video Demo](https://youtu.be/WE6O-5G8qlU)
 
-![Logo](https://postimg.cc/Hrdnj6Mw)
+![Screen-Shot-2019-08-07-at-9-13-22-PM.png](https://postimg.cc/Hrdnj6Mw)
 
 ## Developer Contact
 
@@ -59,19 +62,9 @@ To sign up as a new user in sandbox mode when you've reached the Plaid authentic
 
 ## Technologies Used
 
-* [React-Native](https://facebook.github.io/react-native/)
+* [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
 * [D3](https://d3js.org/)
 * [Node.js](https://nodejs.org/en/)
 * [Express](https://expressjs.com/)
 * [PostgresSQL](https://www.postgresql.org/) and [Sequelize](http://docs.sequelizejs.com/)
-
-## Features
-
-* Displays current account and transactions data via third party API, Plaid
-* Data visualization for remaining spendable, spending by category
-* Financial Personality Quiz to personalize budget tracking
-* Recommended Articles based on financial personality type
-* Streaks for progress and habit tracking
-* Set Daily, weekly, bi-weekly reminders to check-in to the app via push notifications
-* Update individual transaction category and toggle to include/exclude from budgeted spending
