@@ -1,5 +1,7 @@
 # Money-Mapper
 
+Deployed: Beta [Link](https://money-mapper-hd.herokuapp.com)
+
 The Problem: Obtaining a comprehensive picture of users' financial health is often times difficult when they have accounts with multiple financial institutions.
 
 The Solution: Developed a personal finance application that consolidates financial data from multiple sources and categorizes transaction data using the PLAID API.
@@ -13,7 +15,7 @@ The Solution: Developed a personal finance application that consolidates financi
 
 [Video Demo](https://youtu.be/WE6O-5G8qlU)
 
-![Screen-Shot-2019-08-07-at-9-13-22-PM.png](https://postimg.cc/Hrdnj6Mw)
+![Screen-Shot-2019-08-07-at-9-13-22-PM.png](https://blog.plaid.com/content/images/2019/05/Instant-Authentication-Flow.png)
 
 ## Developer Contact
 
